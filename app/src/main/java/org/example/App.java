@@ -3,17 +3,10 @@
  */
 package org.example;
 
-import com.fasterxml.jackson.core.JsonToken;
 import org.example.entities.Train;
 import org.example.entities.User;
 import org.example.services.UserBookingService;
 import org.example.utils.PasswordHashUtil;
-import org.example.list.LinkedList;
-
-import static org.example.utilities.StringUtils.join;
-import static org.example.utilities.StringUtils.split;
-
-import org.apache.commons.text.WordUtils;
 
 import java.io.IOException;
 import java.util.*;

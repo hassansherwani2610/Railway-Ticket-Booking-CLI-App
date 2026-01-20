@@ -26,6 +26,7 @@ dependencies {
 
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.6'
     implementation 'org.mindrot:jbcrypt:0.4'
+    implementation 'org.apache.commons:commons-text:1.11.0'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
