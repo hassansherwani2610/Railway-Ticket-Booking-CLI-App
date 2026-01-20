@@ -76,7 +76,7 @@ public class App {
 
                     List<Train> trainList = userBookingServiceObject.getTrains(source, destination);
 
-                    int index = 1;
+                    int index = 0;
                     for (Train t : trainList){
                         System.out.println(index + " Train id : " + t.getTrainId());
                         for (Map.Entry<String, String> entry: t.getStationTimes().entrySet()){

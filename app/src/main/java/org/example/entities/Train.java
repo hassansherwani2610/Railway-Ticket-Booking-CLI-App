@@ -11,14 +11,14 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true) // Use this annotation, so if JSON contains extra fields that are not in this class, ignore them.
 public class Train {
     private String trainId;
-    private String trainNo;
+    private int trainNo;
     private List<List<Integer>> seats;
     private Map<String , String> stationTimes;
     private List<String> stations;
 
     public Train(){}
 
-    public Train(String trainId, String trainNo, List<List<Integer>> seats, Map<String, String> stationTimes, List<String> stations) {
+    public Train(String trainId, int trainNo, List<List<Integer>> seats, Map<String, String> stationTimes, List<String> stations) {
         this.trainId = trainId;
         this.trainNo = trainNo;
         this.seats = seats;
@@ -34,11 +34,11 @@ public class Train {
         this.trainId = trainId;
     }
 
-    public String getTrainNo() {
+    public int getTrainNo() {
         return this.trainNo;
     }
 
-    public void setTrainNo(String trainNo) {
+    public void setTrainNo(int trainNo) {
         this.trainNo = trainNo;
     }
 
