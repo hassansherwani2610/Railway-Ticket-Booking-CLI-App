@@ -16,7 +16,7 @@ public class TrainService {
 
     private ObjectMapper objectMapper = new ObjectMapper();
     private List<Train> trainList;
-    private static final String TRAIN_FINAL_PATH = "app/src/main/java/org/example/app/localDb/trains.json";
+    private static final String TRAIN_FINAL_PATH = "src/main/java/org/example/localDB/trains.json";
 
     public TrainService() throws IOException{
         File trains = new File(TRAIN_FINAL_PATH);
