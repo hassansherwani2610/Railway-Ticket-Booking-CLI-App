@@ -5,6 +5,8 @@
     "hashed_password": "hashed123",
     "tickets_booked": [
       {
+        "ticket_id": "tkt001",
+        "user_id": "hs001",
         "source": "Karachi Cantt",
         "destination": "Lahore Junction",
         "date_of_travel": "2024-01-15T18:30:00Z",
@@ -17,12 +19,18 @@
             [0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0]
           ],
-          "stations": {
+          "station_times": {
             "Karachi Cantt": "08:00:00",
             "Hyderabad": "10:30:00",
             "Multan Cantt": "18:00:00",
             "Lahore Junction": "23:45:00"
-          }
+          },
+          "stations": [
+            "Karachi Cantt",
+            "Hyderabad",
+            "Multan Cantt",
+            "Lahore Junction"
+          ]
         }
       }
     ]
