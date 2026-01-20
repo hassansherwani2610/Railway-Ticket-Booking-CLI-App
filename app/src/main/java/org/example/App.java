@@ -42,14 +42,13 @@ public class App {
             System.out.println("------------------------------");
             System.out.print("Choose an option: ");
 
-            if (!scan.hasNextInt()) {
+            String optionInput = scan.nextLine();
+            try {
+                option = Integer.parseInt(optionInput);
+            } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid number.");
-                scan.nextLine();
                 continue;
             }
-
-            option = scan.nextInt();
-            scan.nextLine();
 
             switch (option) {
 
@@ -126,14 +125,14 @@ public class App {
                     }
 
                     System.out.print("Select train number: ");
-                    if (!scan.hasNextInt()) {
+                    String selectedInput = scan.nextLine();
+                    int selected;
+                    try {
+                        selected = Integer.parseInt(selectedInput);
+                    } catch (NumberFormatException e) {
                         System.out.println("Invalid selection.");
-                        scan.nextLine();
                         break;
                     }
-
-                    int selected = scan.nextInt();
-                    scan.nextLine();
 
                     if (selected < 1 || selected > trains.size()) {
                         System.out.println("Invalid train number.");
@@ -161,21 +160,24 @@ public class App {
                     }
 
                     System.out.print("\nEnter row: ");
-                    if (!scan.hasNextInt()) {
+                    String rowInput = scan.nextLine();
+                    int row;
+                    try {
+                        row = Integer.parseInt(rowInput);
+                    } catch (NumberFormatException e) {
                         System.out.println("Invalid input.");
-                        scan.nextLine();
                         break;
                     }
-                    int row = scan.nextInt();
 
                     System.out.print("Enter column: ");
-                    if (!scan.hasNextInt()) {
+                    String colInput = scan.nextLine();
+                    int col;
+                    try {
+                        col = Integer.parseInt(colInput);
+                    } catch (NumberFormatException e) {
                         System.out.println("Invalid input.");
-                        scan.nextLine();
                         break;
                     }
-                    int col = scan.nextInt();
-                    scan.nextLine();
 
                     boolean booked = userBookingServiceObject.bookTrainSeat(trainSelectedForBooking, row, col);
 
