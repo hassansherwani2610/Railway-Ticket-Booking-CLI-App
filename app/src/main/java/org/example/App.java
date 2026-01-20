@@ -42,13 +42,14 @@ public class App {
             System.out.println("------------------------------");
             System.out.print("Choose an option: ");
 
-            String optionInput = scan.nextLine();
-            try {
-                option = Integer.parseInt(optionInput);
-            } catch (NumberFormatException e) {
+            if (!scan.hasNextInt()) {
                 System.out.println("Please enter a valid number.");
+                scan.nextLine();
                 continue;
             }
+
+            option = scan.nextInt();
+            scan.nextLine();
 
             switch (option) {
 
@@ -64,8 +65,7 @@ public class App {
                             username,
                             password,
                             PasswordHashUtil.hashPassword(password),
-                            new ArrayList<>()
-                    );
+                            new ArrayList<>());
 
                     userBookingServiceObject.signUpUser(newUser);
                 }
@@ -82,8 +82,7 @@ public class App {
                             username,
                             password,
                             PasswordHashUtil.hashPassword(password),
-                            new ArrayList<>()
-                    );
+                            new ArrayList<>());
 
                     try {
                         userBookingServiceObject = new UserBookingService(loginUser);
@@ -94,6 +93,10 @@ public class App {
                 }
 
                 case 3 -> { // To Fetch Bookings
+                    if (userBookingServiceObject.getUser() == null) {
+                        System.out.println("Please login first to fetch bookings.");
+                        break;
+                    }
                     System.out.println("\nFetching your bookings...\n");
                     userBookingServiceObject.fetchBookings();
                 }
@@ -113,26 +116,25 @@ public class App {
                     }
 
                     System.out.println("\nAvailable Trains:");
-                    int index = 1;
-                    for (Train t : trains) {
-                        System.out.println(index + ". Train ID: " + t.getTrainId());
+                    for (int i = 0; i < trains.size(); i++) {
+                        Train t = trains.get(i);
+                        System.out.println((i + 1) + ". Train ID: " + t.getTrainId());
+
                         t.getStationTimes().forEach(
-                                (station, time) ->
-                                        System.out.println("   " + station + " - " + time)
-                        );
-                        index++;
+                                (station, time) -> System.out.println("   " + station + " - " + time));
+
                         System.out.println();
                     }
 
                     System.out.print("Select train number: ");
-                    String selectedInput = scan.nextLine();
-                    int selected;
-                    try {
-                        selected = Integer.parseInt(selectedInput);
-                    } catch (NumberFormatException e) {
+                    if (!scan.hasNextInt()) {
                         System.out.println("Invalid selection.");
+                        scan.nextLine();
                         break;
                     }
+
+                    int selected = scan.nextInt();
+                    scan.nextLine();
 
                     if (selected < 1 || selected > trains.size()) {
                         System.out.println("Invalid train number.");
@@ -143,6 +145,11 @@ public class App {
                 }
 
                 case 5 -> { // To Book a Seat
+                    if (userBookingServiceObject.getUser() == null) {
+                        System.out.println("Please login first to book a seat.");
+                        break;
+                    }
+
                     if (trainSelectedForBooking == null) {
                         System.out.println("Please select a train first.");
                         break;
@@ -160,34 +167,35 @@ public class App {
                     }
 
                     System.out.print("\nEnter row: ");
-                    String rowInput = scan.nextLine();
-                    int row;
-                    try {
-                        row = Integer.parseInt(rowInput);
-                    } catch (NumberFormatException e) {
+                    if (!scan.hasNextInt()) {
                         System.out.println("Invalid input.");
+                        scan.nextLine();
                         break;
                     }
+                    int row = scan.nextInt();
 
                     System.out.print("Enter column: ");
-                    String colInput = scan.nextLine();
-                    int col;
-                    try {
-                        col = Integer.parseInt(colInput);
-                    } catch (NumberFormatException e) {
+                    if (!scan.hasNextInt()) {
                         System.out.println("Invalid input.");
+                        scan.nextLine();
                         break;
                     }
+                    int col = scan.nextInt();
+                    scan.nextLine();
 
                     boolean booked = userBookingServiceObject.bookTrainSeat(trainSelectedForBooking, row, col);
 
                     System.out.println(booked
                             ? "Seat booked successfully."
-                            : "Unable to book the seat."
-                    );
+                            : "Unable to book the seat.");
                 }
 
                 case 6 -> { // To Cancel Booking
+                    if (userBookingServiceObject.getUser() == null) {
+                        System.out.println("Please login first to cancel a booking.");
+                        break;
+                    }
+
                     System.out.print("\nEnter Ticket ID: ");
                     String ticketId = scan.nextLine();
 
@@ -195,8 +203,7 @@ public class App {
 
                     System.out.println(cancelled
                             ? "Booking cancelled."
-                            : "Cancellation failed."
-                    );
+                            : "Cancellation failed.");
                 }
 
                 case 7 -> { // To Exit from App

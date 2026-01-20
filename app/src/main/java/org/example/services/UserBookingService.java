@@ -17,6 +17,10 @@ public class UserBookingService {
     private List<User> userList; // List of all users
     private User user; // To set user GLOBALLY
 
+    public User getUser() {
+        return this.user;
+    }
+
     private static final String USER_FILE_PATH = "src/main/java/org/example/localDB/users.json"; // Path of "users.json" - LOCAL DB
 
     // To load USERS from file
