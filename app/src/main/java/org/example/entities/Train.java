@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-import java.sql.Time;
 import java.util.List;
 import java.util.Map;
 
@@ -14,12 +13,12 @@ public class Train {
     private String trainId;
     private String trainNo;
     private List<List<Integer>> seats;
-    private Map<String , Time> stationTimes;
+    private Map<String , String> stationTimes;
     private List<String> stations;
 
     public Train(){}
 
-    public Train(String trainId, String trainNo, List<List<Integer>> seats, Map<String, Time> stationTimes, List<String> stations) {
+    public Train(String trainId, String trainNo, List<List<Integer>> seats, Map<String, String> stationTimes, List<String> stations) {
         this.trainId = trainId;
         this.trainNo = trainNo;
         this.seats = seats;
@@ -51,11 +50,11 @@ public class Train {
         this.seats = seats;
     }
 
-    public Map<String, Time> getStationTimes() {
+    public Map<String, String> getStationTimes() {
         return this.stationTimes;
     }
 
-    public void setStationTimes(Map<String, Time> stationTimes) {
+    public void setStationTimes(Map<String, String> stationTimes) {
         this.stationTimes = stationTimes;
     }
 
