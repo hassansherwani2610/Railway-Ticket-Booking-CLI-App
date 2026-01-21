@@ -152,7 +152,7 @@ These files act as a **mock database** for simplicity.
 
 ## 👨‍💻 Author
 
-**Hasan Ahmed Khan Shirwani**  
+**Hassan Ahmed Khan Sherwani**  
 BS Computer Science – UBIT  
 
 ---
